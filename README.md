@@ -3,7 +3,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![WordPress Tested](https://img.shields.io/badge/WordPress-tested%20up%20to%206.6.2-green)
-![PHP](https://img.shields.io/badge/PHP-%3E%3D7.4-blue)
+![PHP](https://img.shields.io/badge/PHP-%3E%3D8.3-blue)
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 
 **Roomly** is a powerful and user-friendly WordPress plugin for managing hotel room bookings. It offers an easy-to-navigate interface for customers to book rooms, make payments, and receive automated booking confirmations and invoices. Perfect for hotels, guesthouses, and inns looking for a reliable booking solution.
