@@ -14,7 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; 
 }
 
+// Cargar la clase principal del plugin
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-roomly-plugin.php';
+
+// Cargar la clase de Elementor para los widgets
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-roomly-elementor.php';
 
 function roomly_init() {
     $plugin = new Roomly_Plugin();
@@ -22,3 +26,12 @@ function roomly_init() {
 }
 
 add_action( 'plugins_loaded', 'roomly_init' );
+
+function roomly_include_booking_form() {
+    $template = plugin_dir_path( __FILE__ ) . 'templates/booking-form.php';
+    if ( file_exists( $template ) ) {
+        include $template;
+    } else {
+        echo 'Booking form template not found!';
+    }
+}
