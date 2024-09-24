@@ -2,7 +2,7 @@
 
 ![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
-![WordPress Tested](https://img.shields.io/badge/WordPress-tested%20up%20to-6.0-green)
+![WordPress Tested](https://img.shields.io/badge/WordPress-tested%20up%20to%206.0-green)
 ![PHP](https://img.shields.io/badge/PHP-%3E%3D7.4-blue)
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 
