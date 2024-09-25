@@ -8,12 +8,33 @@
     <label for="checkout_date">Check-out Date:</label>
     <input type="text" id="checkout_date" name="checkout_date" required>
 
-    <!-- Tipos de habitaciones -->
+    <!-- Tipos de habitaciones (dinámico desde el CPT) -->
     <label for="room_type">Room Type:</label>
     <select id="room_type" name="room_type">
-        <option value="standard" data-price="100">Standard - $100/night</option>
-        <option value="suite" data-price="150">Suite - $150/night</option>
-        <option value="deluxe" data-price="200">Deluxe - $200/night</option>
+        <?php
+        // Hacer una consulta a las habitaciones del CPT
+        $args = array(
+            'post_type' => 'roomly_habitaciones',
+            'posts_per_page' => -1
+        );
+        $habitaciones = new WP_Query( $args );
+
+        if ( $habitaciones->have_posts() ) :
+            while ( $habitaciones->have_posts() ) : $habitaciones->the_post();
+                // Obtener los metadatos personalizados
+                $precio = get_post_meta( get_the_ID(), '_roomly_precio', true );
+                $capacidad = get_post_meta( get_the_ID(), '_roomly_capacidad', true );
+                ?>
+                <option value="<?php the_title(); ?>" data-price="<?php echo esc_attr( $precio ); ?>" data-capacidad="<?php echo esc_attr( $capacidad ); ?>">
+                    <?php the_title(); ?> - $<?php echo esc_html( $precio ); ?>/night (Capacidad: <?php echo esc_html( $capacidad ); ?> personas)
+                </option>
+                <?php
+            endwhile;
+            wp_reset_postdata();
+        else :
+            echo '<option>' . __( 'No hay habitaciones disponibles', 'roomly' ) . '</option>';
+        endif;
+        ?>
     </select>
 
     <!-- Número de huéspedes -->
