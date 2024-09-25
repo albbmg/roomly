@@ -54,3 +54,4 @@ class Roomly_Elementor_Booking_Widget extends \Elementor\Widget_Base {
         }
     }
 }
+// This works
