@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Evita el acceso directo si se accede sin pasar por WordPress.
+    exit; 
 }
 
 class Roomly_Elementor_Booking_Widget extends \Elementor\Widget_Base {
@@ -43,10 +43,10 @@ class Roomly_Elementor_Booking_Widget extends \Elementor\Widget_Base {
     }
 
     protected function render() {
-        // Ruta absoluta a la plantilla de formulario de reserva
-        $template = plugin_dir_path( dirname( __FILE__ ) ) . 'templates/booking-form.php';
+        $template = plugin_dir_path( dirname( __FILE__ ) ) . '../templates/booking-form.php';
 
-        // Verificamos si el archivo de plantilla existe antes de incluirlo
+        error_log( 'Generated template path: ' . $template );
+
         if ( file_exists( $template ) ) {
             include $template;
         } else {
