@@ -133,3 +133,53 @@ function roomly_save_habitacion_metabox( $post_id ) {
     }
 }
 add_action( 'save_post', 'roomly_save_habitacion_metabox' );
+
+// Añadir la página de configuración al menú de WordPress
+function roomly_add_admin_menu() {
+    add_menu_page(
+        __( 'Roomly Settings', 'roomly' ),
+        __( 'Roomly Settings', 'roomly' ),
+        'manage_options',
+        'roomly-settings',
+        'roomly_settings_page_html',
+        'dashicons-admin-generic',
+        20
+    );
+}
+add_action( 'admin_menu', 'roomly_add_admin_menu' );
+
+// Mostrar el contenido de la página de configuración
+function roomly_settings_page_html() {
+    // Comprobar permisos de usuario
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return;
+    }
+
+    // Guardar las opciones si se envía el formulario
+    if ( isset( $_POST['roomly_settings_submit'] ) ) {
+        update_option( 'roomly_email_address', sanitize_email( $_POST['roomly_email_address'] ) );
+        echo '<div class="updated"><p>Settings saved</p></div>';
+    }
+
+    // Obtener el valor actual del correo electrónico
+    $email_address = get_option( 'roomly_email_address', '' );
+    ?>
+
+    <div class="wrap">
+        <h1><?php _e( 'Roomly Settings', 'roomly' ); ?></h1>
+        <form method="post" action="">
+            <table class="form-table">
+                <tr valign="top">
+                    <th scope="row">
+                        <label for="roomly_email_address"><?php _e( 'Reservation Email Address', 'roomly' ); ?></label>
+                    </th>
+                    <td>
+                        <input type="email" id="roomly_email_address" name="roomly_email_address" value="<?php echo esc_attr( $email_address ); ?>" class="regular-text" />
+                    </td>
+                </tr>
+            </table>
+            <?php submit_button( __( 'Save Settings', 'roomly' ) ); ?>
+        </form>
+    </div>
+    <?php
+}
