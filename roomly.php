@@ -183,3 +183,4 @@ function roomly_settings_page_html() {
     </div>
     <?php
 }
+//Implementa el resto
