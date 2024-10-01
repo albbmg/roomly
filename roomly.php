@@ -161,6 +161,8 @@ function roomly_settings_page_html() {
         echo '<div class="updated"><p>Settings saved</p></div>';
     }
 
+
+    
     $email_address = get_option( 'roomly_email_address', '' );
     ?>
 
