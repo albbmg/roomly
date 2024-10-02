@@ -155,14 +155,14 @@ function roomly_settings_page_html() {
         return;
     }
 
-    // Guardar las opciones si se envía el formulario
+    
     if ( isset( $_POST['roomly_settings_submit'] ) ) {
         update_option( 'roomly_email_address', sanitize_email( $_POST['roomly_email_address'] ) );
         echo '<div class="updated"><p>Settings saved</p></div>';
     }
 
 
-    
+
     $email_address = get_option( 'roomly_email_address', '' );
     ?>
 
