@@ -182,6 +182,6 @@ function roomly_settings_page_html() {
             <?php submit_button( __( 'Save Settings', 'roomly' ) ); ?>
         </form>
     </div>
-    <?php
+    <?php 
 }
 
